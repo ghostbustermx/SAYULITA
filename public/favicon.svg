@@ -1,0 +1,27 @@
+<svg viewBox="50 5 110 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sun -->
+  <circle cx="120" cy="45" r="28" fill="#f9a825" />
+  
+  <!-- Back Wave (Dark Blue) -->
+  <path d="M 50 70 Q 100 50 140 70 T 220 65 L 220 100 L 50 100 Z" fill="#004972" />
+  
+  <!-- Front Wave (Light Blue) -->
+  <path d="M 50 85 Q 90 65 130 85 T 230 75 L 230 100 L 50 100 Z" fill="#67bafd" />
+  
+  <!-- Accent Wave (Ocean Blue) -->
+  <path d="M 50 95 Q 100 80 150 95 T 240 85 L 240 100 L 50 100 Z" fill="#006399" />
+
+  <!-- Palm Trunk (Dark Blue) -->
+  <path d="M 65 95 C 70 60 80 40 100 35 L 105 35 C 85 45 78 65 75 95 Z" fill="#004972" />
+  
+  <!-- Coconuts (Dark Blue) -->
+  <circle cx="92" cy="42" r="5" fill="#004972" />
+  <circle cx="102" cy="40" r="4" fill="#004972" />
+
+  <!-- Leaves -->
+  <path d="M 100 35 C 70 20 50 35 50 35 C 65 25 85 28 100 35 Z" fill="#004972" />
+  <path d="M 100 35 C 120 15 145 25 145 25 C 130 20 110 25 100 35 Z" fill="#004972" />
+  <path d="M 100 35 C 90 10 105 5 105 5 C 105 15 105 25 100 35 Z" fill="#67bafd" />
+  <path d="M 100 35 C 65 45 50 65 50 65 C 65 50 85 45 100 35 Z" fill="#67bafd" />
+  <path d="M 100 35 C 130 45 155 55 155 55 C 140 45 120 42 100 35 Z" fill="#67bafd" />
+</svg>

@@ -1,0 +1,123 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--rounded-xl);
+  padding: 8px;
+  box-shadow: var(--shadow-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  max-width: 800px;
+  width: 100%;
+}
+
+.search-bar__field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-bar__field--dates {
+  flex: 1.4;
+}
+
+.search-bar__icon {
+  color: var(--color-outline);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.search-bar__date-range {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-bar__date-sep {
+  color: var(--color-outline);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.search-bar__select {
+  font-family: var(--font-family);
+  font-size: var(--fs-body-md);
+  color: var(--color-on-surface);
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.search-bar__select option {
+  font-family: var(--font-family);
+}
+
+.search-bar__divider {
+  width: 1px;
+  height: 32px;
+  background: var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+.search-bar__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--gradient-primary-btn);
+  color: var(--color-on-primary);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--rounded-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(249, 168, 37, 0.3);
+}
+
+.search-bar__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(249, 168, 37, 0.45);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    border-radius: var(--rounded-lg);
+    padding: 12px;
+    gap: 4px;
+  }
+
+  .search-bar__field {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--rounded);
+    background: var(--color-surface-container-low);
+  }
+
+  .search-bar__divider {
+    display: none;
+  }
+
+  .search-bar__btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    border-radius: var(--rounded);
+    margin-top: 4px;
+  }
+}

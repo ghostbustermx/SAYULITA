@@ -1,0 +1,32 @@
+.floating-palms {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-palm-wrap {
+  position: absolute;
+  opacity: 0.12;
+  animation: float-palm ease-in-out infinite;
+  will-change: transform;
+}
+
+.floating-palm {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes float-palm {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  33% {
+    transform: translateY(-10px);
+  }
+  66% {
+    transform: translateY(-5px);
+  }
+}

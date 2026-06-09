@@ -1,0 +1,208 @@
+.why-book {
+  background: var(--color-surface-container-low);
+}
+
+/* Comparison Card */
+.why-book__comparison {
+  max-width: 640px;
+  margin: 0 auto var(--stack-lg);
+}
+
+.comparison-card {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--rounded-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.comparison-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.comparison-card__label {
+  font-size: var(--fs-headline-md);
+  font-weight: var(--fw-headline-md);
+  color: var(--color-on-surface);
+}
+
+.comparison-card__base {
+  font-size: var(--fs-label-sm);
+  color: var(--color-on-surface-variant);
+}
+
+.comparison-card__row {
+  display: grid;
+  grid-template-columns: 200px 1fr 100px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-surface-container);
+}
+
+.comparison-card__platform {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-on-surface);
+}
+
+.comparison-card__bar-wrap {
+  height: 12px;
+  background: var(--color-surface-container);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+}
+
+.comparison-card__bar {
+  height: 100%;
+  border-radius: var(--rounded-full);
+  min-width: 4px;
+}
+
+.comparison-card__fee {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.comparison-card__free {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  color: var(--color-tertiary);
+}
+
+.comparison-card__savings {
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--color-tertiary-fixed);
+  border-radius: var(--rounded);
+  text-align: center;
+  font-size: 15px;
+  color: var(--color-on-tertiary-container);
+}
+
+.comparison-card__savings strong {
+  font-weight: 800;
+}
+
+/* Pillars */
+.why-book__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  margin-bottom: var(--stack-lg);
+}
+
+.pillar-card {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--rounded-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pillar-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pillar-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--rounded-lg);
+  background: var(--color-tertiary-fixed);
+  color: var(--color-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.pillar-card__badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--color-tertiary);
+  color: var(--color-on-tertiary);
+  border-radius: var(--rounded-full);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-label-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pillar-card__title {
+  font-size: var(--fs-headline-md);
+  font-weight: var(--fw-headline-md);
+  line-height: var(--lh-headline-md);
+}
+
+.pillar-card__desc {
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body-md);
+  color: var(--color-on-surface-variant);
+}
+
+/* Trust Strip */
+.why-book__trust-strip {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-tertiary-fixed);
+  border-radius: var(--rounded-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-tertiary);
+}
+
+.trust-badge__icon {
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .why-book__pillars {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .comparison-card__row {
+    grid-template-columns: 1fr 1fr 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .comparison-card {
+    padding: 20px;
+  }
+  .comparison-card__row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .comparison-card__fee {
+    text-align: left;
+  }
+  .why-book__trust-strip {
+    gap: 12px;
+  }
+  .trust-badge {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}

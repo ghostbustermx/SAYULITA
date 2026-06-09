@@ -1,0 +1,294 @@
+/* ============================================================
+   SAYULITATRAVEL — Design System
+   Theme: Tropical Professional
+   Font: Plus Jakarta Sans
+   ============================================================ */
+
+/* --- CSS Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Design Tokens --- */
+:root {
+  /* Colors — Primary (Vibrant Orange) */
+  --color-primary: #835400;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #f9a825;
+  --color-on-primary-container: #674100;
+  --color-inverse-primary: #ffb957;
+  --color-primary-fixed: #ffddb5;
+  --color-primary-fixed-dim: #ffb957;
+
+  /* Colors — Secondary (Ocean Blue) */
+  --color-secondary: #006399;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #67bafd;
+  --color-on-secondary-container: #004972;
+  --color-secondary-fixed: #cde5ff;
+  --color-secondary-fixed-dim: #94ccff;
+
+  /* Colors — Tertiary (Palm Green) */
+  --color-tertiary: #2c694e;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #88c6a6;
+  --color-on-tertiary-container: #12533a;
+  --color-tertiary-fixed: #b1f0ce;
+
+  /* Colors — Error */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+
+  /* Colors — Surfaces */
+  --color-surface: #fcf9f8;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-bright: #fcf9f8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-on-surface: #1b1b1b;
+  --color-on-surface-variant: #524434;
+  --color-inverse-surface: #303030;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-surface-tint: #835400;
+
+  /* Colors — Outline */
+  --color-outline: #857462;
+  --color-outline-variant: #d7c3ae;
+
+  /* Colors — Background */
+  --color-background: #fcf9f8;
+  --color-on-background: #1b1b1b;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #f9a825 0%, #e08900 50%, #835400 100%);
+  --gradient-primary-btn: linear-gradient(180deg, #f9a825 0%, #e69500 100%);
+  --gradient-hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+  --gradient-card-overlay: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-headline-xl: 48px;
+  --fw-headline-xl: 800;
+  --lh-headline-xl: 1.2;
+  --ls-headline-xl: -0.02em;
+
+  --fs-headline-lg: 32px;
+  --fw-headline-lg: 700;
+  --lh-headline-lg: 1.3;
+
+  --fs-headline-lg-mobile: 24px;
+
+  --fs-headline-md: 20px;
+  --fw-headline-md: 700;
+  --lh-headline-md: 1.4;
+
+  --fs-body-lg: 18px;
+  --fw-body-lg: 400;
+  --lh-body-lg: 1.6;
+
+  --fs-body-md: 16px;
+  --fw-body-md: 400;
+  --lh-body-md: 1.5;
+
+  --fs-label-bold: 14px;
+  --fw-label-bold: 700;
+  --lh-label-bold: 1.2;
+  --ls-label-bold: 0.05em;
+
+  --fs-label-sm: 12px;
+  --fw-label-sm: 500;
+  --lh-label-sm: 1.2;
+
+  /* Rounded */
+  --rounded-sm: 0.25rem;
+  --rounded: 0.5rem;
+  --rounded-md: 0.75rem;
+  --rounded-lg: 1rem;
+  --rounded-xl: 1.5rem;
+  --rounded-full: 9999px;
+
+  /* Spacing */
+  --container-max: 1280px;
+  --gutter: 24px;
+  --margin-mobile: 16px;
+  --margin-desktop: 48px;
+  --stack-sm: 8px;
+  --stack-md: 24px;
+  --stack-lg: 64px;
+
+  /* Elevation */
+  --shadow-card: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0px 8px 32px rgba(0, 0, 0, 0.14);
+  --shadow-elevated: 0px 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-navbar: 0px 2px 12px rgba(0, 0, 0, 0.06);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base Styles --- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-body-md);
+  line-height: var(--lh-body-md);
+  color: var(--color-on-surface);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-on-secondary-container);
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  color: var(--color-on-surface);
+}
+
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--margin-desktop);
+}
+
+/* --- Section Spacing --- */
+.section {
+  padding: var(--stack-lg) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pattern Overlay for all sections */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  right: -200px;
+  bottom: -200px;
+  z-index: 0;
+  background-image: url('./assets/palm-sun-pattern.webp');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  mix-blend-mode: multiply; /* Makes white backgrounds transparent, keeps dark lines */
+  opacity: 0.12; /* Increased opacity to ensure it's visible */
+  animation: bg-drift 40s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes bg-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(200px, 200px); }
+}
+
+/* Ensure content is strictly above the pattern */
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Utility Classes --- */
+.text-center { text-align: center; }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-tertiary { color: var(--color-tertiary); }
+
+/* --- Date Picker Overrides --- */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__input-container input {
+  font-family: var(--font-family) !important;
+  font-size: var(--fs-body-md) !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: var(--color-on-surface) !important;
+  width: 100% !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+.react-datepicker {
+  font-family: var(--font-family) !important;
+  border: 1px solid var(--color-outline-variant) !important;
+  border-radius: var(--rounded-lg) !important;
+  box-shadow: var(--shadow-elevated) !important;
+}
+.react-datepicker__header {
+  background: var(--color-surface-container-low) !important;
+  border-bottom: 1px solid var(--color-outline-variant) !important;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+  background-color: var(--color-primary-container) !important;
+  color: var(--color-on-primary-container) !important;
+}
+.react-datepicker__day:hover {
+  background-color: var(--color-primary-fixed) !important;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: var(--rounded-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--margin-mobile);
+  }
+  .section {
+    padding: 40px 0;
+  }
+}
