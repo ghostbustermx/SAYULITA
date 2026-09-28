@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   FiSearch, FiGrid, FiList, FiMap, FiMessageSquare, FiStar,
@@ -112,7 +113,7 @@ const i18n = {
         desc: "Revitalize both body and mind. From massage therapies and wellness centers to yoga classes and skincare.",
         links: [
           { label: "Hair & Beauty", icon: <MdOutlineFaceRetouchingNatural /> },
-          { label: "Massage & Spa", icon: <MdOutlineSpa /> },
+          { label: "Massage & Spa", icon: <MdOutlineSpa />, href: '/sayulita-massage' },
           { label: "Spas", icon: <MdOutlineSpa /> },
           { label: "Health & Wellness", icon: <FiHeart /> },
           { label: "Medical Esthetics & Skincare", icon: <MdOutlineFaceRetouchingNatural /> },
@@ -268,7 +269,7 @@ const i18n = {
         desc: "Revitaliza tanto el cuerpo como la mente. Desde terapias de masaje y centros de bienestar hasta clases de yoga y cuidados para la piel.",
         links: [
           { label: "Cabello & Belleza", icon: <MdOutlineFaceRetouchingNatural /> },
-          { label: "Masajes & Spa", icon: <MdOutlineSpa /> },
+          { label: "Masajes & Spa", icon: <MdOutlineSpa />, href: '/sayulita-massage' },
           { label: "Spas", icon: <MdOutlineSpa /> },
           { label: "Salud & Bienestar", icon: <FiHeart /> },
           { label: "Estética Médica", icon: <MdOutlineFaceRetouchingNatural /> },
@@ -549,12 +550,28 @@ export default function BusinessesPage({ language = 'ENG' }) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  {(section.id === 'wellness' ? wellnessLinks : section.id === 'eat-drink' ? eatDrinkLinks : section.id === 'weddings' ? weddingsLinks : section.id === 'shopping' ? shoppingLinks : section.id === 'home-services' ? homeServicesLinks : section.id === 'family' ? familyLinks : section.links).map((link) => (
-                    <a key={link.label} href="#businesses" className="bp-category__link">
-                      <span className="bp-category__link-icon">{link.icon}</span>
-                      {link.label}
-                    </a>
-                  ))}
+                  {(section.id === 'wellness' ? wellnessLinks : section.id === 'eat-drink' ? eatDrinkLinks : section.id === 'weddings' ? weddingsLinks : section.id === 'shopping' ? shoppingLinks : section.id === 'home-services' ? homeServicesLinks : section.id === 'family' ? familyLinks : section.links).map((link) => {
+                    const linkContent = (
+                      <>
+                        <span className="bp-category__link-icon">{link.icon}</span>
+                        {link.label}
+                      </>
+                    );
+
+                    if (link.href) {
+                      return (
+                        <Link key={link.label} href={link.href} className="bp-category__link">
+                          {linkContent}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <a key={link.label} href="#businesses" className="bp-category__link">
+                        {linkContent}
+                      </a>
+                    );
+                  })}
                 </motion.div>
               </div>
             </div>

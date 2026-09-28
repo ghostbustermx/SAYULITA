@@ -221,10 +221,12 @@ const i18n = {
   }
 };
 
+let autoModalShown = false;
+
 export default function Advertise({ language = 'ENG' }) {
   const [activeFaq, setActiveFaq] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [modalTop, setModalTop] = useState(0);
+  const [modalTop] = useState(90);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const t = i18n[language] || i18n.ENG;
 
@@ -232,8 +234,20 @@ export default function Advertise({ language = 'ENG' }) {
     const params = new URLSearchParams(window.location.search);
     if (params.get('openModal') === 'true') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setModalTop(90);
-      setTimeout(() => setShowModal(true), 550);
+      const timer = setTimeout(() => setShowModal(true), 550);
+      return () => clearTimeout(timer);
+    }
+
+    const navEntry = performance.getEntriesByType('navigation')[0];
+    const landedDirectly = !navEntry
+      || new URL(navEntry.name, window.location.href).pathname === window.location.pathname;
+
+    if (landedDirectly && window.location.pathname === '/advertise' && !autoModalShown) {
+      const timer = setTimeout(() => {
+        autoModalShown = true;
+        setShowModal(true);
+      }, 700);
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -477,7 +491,6 @@ export default function Advertise({ language = 'ENG' }) {
                     disabled={isLocked}
                     onClick={isPromo ? () => {
                       window.scrollTo({ top: 0, behavior: 'smooth' });
-                      setModalTop(90);
                       setTimeout(() => setShowModal(true), 550);
                     } : undefined}
                     className={`adv-btn-plan ${isPromo ? 'adv-btn-plan--promo' : isLocked ? 'adv-btn-plan--locked' : 'adv-btn-plan--outline'}`}
@@ -502,7 +515,7 @@ export default function Advertise({ language = 'ENG' }) {
             </p>
             <p className="adv-plans-meta__sub">{t.pricingMeta2}</p>
             <div className="adv-plans-meta__ctas">
-              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalTop(90); setTimeout(() => setShowModal(true), 550); }} className="adv-btn adv-btn--primary">{t.pricingMetaCta}</button>
+              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(() => setShowModal(true), 550); }} className="adv-btn adv-btn--primary">{t.pricingMetaCta}</button>
             </div>
           </div>
         </div>
@@ -546,7 +559,7 @@ export default function Advertise({ language = 'ENG' }) {
               <h3 className="airbnb-card__title text-highlight">{t.airbnbAdvTitle}</h3>
               <p className="airbnb-card__text">{t.airbnbAdvText1}</p>
               <p className="airbnb-card__text">{t.airbnbAdvText2}</p>
-              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalTop(90); setTimeout(() => setShowModal(true), 550); }} className="adv-btn adv-btn--primary mt-4">
+              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(() => setShowModal(true), 550); }} className="adv-btn adv-btn--primary mt-4">
                 {t.airbnbAdvBtn}
               </button>
             </div>
@@ -700,41 +713,36 @@ export default function Advertise({ language = 'ENG' }) {
                   <div className="adv-modal__row">
                     <div className="adv-modal__field">
                       <label className="adv-modal__label">
-                        {language === 'ENG' ? 'Full Name' : 'Nombre Completo'}
+                        {language === 'ENG' ? 'Business Name' : 'Nombre de empresa'}
                       </label>
-                      <input type="text" name="Nombre" className="adv-modal__input" required />
+                      <input type="text" name="BusinessName" className="adv-modal__input" required />
                     </div>
                     <div className="adv-modal__field">
                       <label className="adv-modal__label">
-                        {language === 'ENG' ? 'Email Address' : 'Correo Electrónico'}
+                        {language === 'ENG' ? 'Contact Name' : 'Nombre del contacto'}
                       </label>
-                      <input type="email" name="Email" className="adv-modal__input" required />
+                      <input type="text" name="ContactName" className="adv-modal__input" required />
                     </div>
                   </div>
                   <div className="adv-modal__row">
                     <div className="adv-modal__field">
                       <label className="adv-modal__label">
-                        {language === 'ENG' ? 'Phone Number' : 'Número Telefónico'}
+                        {language === 'ENG' ? 'WhatsApp / Phone' : 'WhatsApp / teléfono'}
                       </label>
-                      <input type="tel" name="Telefono" className="adv-modal__input" />
+                      <input type="tel" name="Phone" className="adv-modal__input" required />
                     </div>
                     <div className="adv-modal__field">
                       <label className="adv-modal__label">
-                        {language === 'ENG' ? 'Property Type' : 'Tipo de Propiedad'}
+                        {language === 'ENG' ? 'Email' : 'Email'}
                       </label>
-                      <select name="Tipo de Propiedad" className="adv-modal__input" required>
-                        <option value="">{language === 'ENG' ? 'Select...' : 'Seleccionar...'}</option>
-                        <option value="rental">{language === 'ENG' ? 'Vacation Rental' : 'Renta Vacacional'}</option>
-                        <option value="business">{language === 'ENG' ? 'Local Business' : 'Negocio Local'}</option>
-                        <option value="realestate">{language === 'ENG' ? 'Real Estate' : 'Bienes Raíces'}</option>
-                      </select>
+                      <input type="email" name="Email" className="adv-modal__input" required />
                     </div>
                   </div>
                   <div className="adv-modal__field">
                     <label className="adv-modal__label">
-                      {language === 'ENG' ? 'Message' : 'Mensaje'}
+                      {language === 'ENG' ? 'Approximate Need' : 'Necesidad aproximada'}
                     </label>
-                    <textarea name="Mensaje" className="adv-modal__input adv-modal__textarea" rows={4}></textarea>
+                    <textarea name="Need" className="adv-modal__input adv-modal__textarea" rows={4} required></textarea>
                   </div>
                   <button type="submit" className="adv-btn adv-btn--primary adv-modal__submit">
                     {language === 'ENG' ? 'Send Message' : 'Enviar Mensaje'}
