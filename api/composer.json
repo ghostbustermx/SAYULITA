@@ -1,0 +1,14 @@
+{
+  "name": "sayulitatravel/api",
+  "description": "Endpoint de captacion de leads",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.0",
+    "ext-json": "*",
+    "phpmailer/phpmailer": "^7.0"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
