@@ -132,7 +132,7 @@
 
 .footer__meta {
   font-style: italic;
-  opacity: 0.7;
+  color: #685845;
 }
 
 @media (max-width: 1024px) {

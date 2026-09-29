@@ -90,6 +90,7 @@ export default function SearchBar({ language = 'ENG' }) {
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
           id="search-bedrooms"
+          aria-label={t.bedrooms}
         >
           <option value="">{t.bedrooms}</option>
           <option value="1">{t.bedroom1}</option>
@@ -109,6 +110,7 @@ export default function SearchBar({ language = 'ENG' }) {
           value={propertyType}
           onChange={(e) => setPropertyType(e.target.value)}
           id="search-property-type"
+          aria-label={t.propertyType}
         >
           <option value="">{t.propertyType}</option>
           <option value="house">{t.typeHouse}</option>

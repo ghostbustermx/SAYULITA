@@ -204,7 +204,7 @@ export default function Navbar({ language = 'ENG', setLanguage }) {
       >
         <div className="navbar__inner container">
           {/* Logo */}
-          <Link href="/" className="navbar__logo" id="nav-logo">
+          <Link href="/" className="navbar__logo" id="nav-logo" aria-label="Sayulita Travels">
             <Logo className="navbar__logo-svg" />
           </Link>
 

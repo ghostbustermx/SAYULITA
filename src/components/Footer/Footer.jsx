@@ -121,7 +121,7 @@ export default function Footer({ language = 'ENG' }) {
         </div>
 
         <div className="footer__bottom">
-          <Link href="/" className="footer__logo">
+          <Link href="/" className="footer__logo" aria-label="Sayulita Travels">
             <Logo className="footer__logo-svg" />
           </Link>
           <p className="footer__copyright">
