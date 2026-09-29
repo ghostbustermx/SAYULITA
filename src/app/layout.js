@@ -1,6 +1,14 @@
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import ClientLayout from './ClientLayout';
 import '@/index.css';
 import '@/App.css';
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jakarta',
+  fallback: ['-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+});
 
 export const metadata = {
   title: 'Sayulita Vacation Rentals — No Booking Fees | Best Prices Guaranteed',
@@ -17,12 +25,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={jakarta.variable}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
       </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
