@@ -1,0 +1,36 @@
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        API_PROXY_URL: http://php-api:80
+    image: sayulitatravel-nextjs:local
+    restart: unless-stopped
+    expose:
+      - "3000"
+    env_file:
+      - .env.nextjs
+    networks:
+      - app-network
+      - npm-network
+
+  php-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    image: sayulitatravel-php-api:local
+    restart: unless-stopped
+    expose:
+      - "80"
+    env_file:
+      - .env.api
+    networks:
+      - app-network
+      - npm-network
+
+networks:
+  app-network:
+    driver: bridge
+  npm-network:
+    external: true

@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+.git
+*.md
+.env*
+!.env.api.example
+!.env.nextjs.example
+.gitkeep
+conversacion-docker-deploy.json
