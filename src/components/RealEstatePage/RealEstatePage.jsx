@@ -17,7 +17,7 @@ import { IoBedOutline } from 'react-icons/io5';
 import { BiBuildings, BiLandscape, BiWater } from 'react-icons/bi';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
-import heroBg from '../../assets/real_state.png';
+import heroBg from '../../assets/real_state.webp';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import './RealEstatePage.css';
 
@@ -750,7 +750,14 @@ export default function RealEstatePage({ language = 'ENG' }) {
       {/* ===== HERO ===== */}
       <section className="rep-hero section" id="realestate-hero">
         <div className="rep-hero__bg">
-          <img src={heroBg.src} alt="Sayulita Real Estate" className="rep-hero__bg-img" />
+          <img
+        src={heroBg.src}
+        alt="Sayulita Real Estate"
+        className="rep-hero__bg-img"
+        width={1024}
+        height={682}
+        fetchPriority="high"
+      />
           <div className="rep-hero__overlay" />
         </div>
         <div className="container">

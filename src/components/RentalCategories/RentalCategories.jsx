@@ -5,7 +5,7 @@ import categoryBeachfront from '../../assets/category-beachfront.png';
 import villaEmma from '../../assets/villa-emma.png';
 import casaAmigos from '../../assets/casa-amigos.png';
 import villaRosetta from '../../assets/villa-rosetta.png';
-import beachHotel from '../../assets/beach-hotel.png';
+import beachHotel from '../../assets/beach-hotel.webp';
 import './RentalCategories.css';
 
 const i18n = {

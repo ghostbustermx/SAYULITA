@@ -25,7 +25,7 @@ import {
 import { GiWhaleTail, GiHorseHead, GiTurtle, GiParachute, GiGlassShot } from 'react-icons/gi';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
-import heroBg from '../../assets/tours.png';
+import heroBg from '../../assets/tours.webp';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import './ToursPage.css';
 
@@ -901,7 +901,14 @@ export default function ToursPage({ language = 'ESP' }) {
       {/* ═══ HERO ═══ */}
       <section className="tp-hero section" id="tours-hero">
         <div className="tp-hero__bg">
-          <img src={heroBg.src} alt="Sayulita Tours" className="tp-hero__bg-img" />
+          <img
+        src={heroBg.src}
+        alt="Sayulita Tours"
+        className="tp-hero__bg-img"
+        width={1024}
+        height={820}
+        fetchPriority="high"
+      />
           <div className="tp-hero__overlay" />
         </div>
         <div className="container">

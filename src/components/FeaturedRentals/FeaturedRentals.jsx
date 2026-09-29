@@ -9,7 +9,7 @@ import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import villaEmma from '../../assets/villa-emma.png';
 import villaRosetta from '../../assets/villa-rosetta.png';
 import casaAmigos from '../../assets/casa-amigos.png';
-import beachHotel from '../../assets/beach-hotel.png';
+import beachHotel from '../../assets/beach-hotel.webp';
 
 import './FeaturedRentals.css';
 

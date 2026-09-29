@@ -31,7 +31,7 @@ import villaEmma from '../../assets/villa-emma.png';
 import villaRosetta from '../../assets/villa-rosetta.png';
 import casaAmigos from '../../assets/casa-amigos.png';
 
-import heroBg from '../../assets/hotels.png';
+import heroBg from '../../assets/hotels.webp';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import './HotelsPage.css';
 
@@ -770,7 +770,14 @@ export default function HotelsPage({ language = 'ESP' }) {
       {/* ═══ HERO ═══ */}
       <section className="hp-hero section" id="hotels-hero">
         <div className="hp-hero__bg">
-          <img src={heroBg.src} alt="Sayulita Hotels" className="hp-hero__bg-img" />
+          <img
+        src={heroBg.src}
+        alt="Sayulita Hotels"
+        className="hp-hero__bg-img"
+        width={900}
+        height={721}
+        fetchPriority="high"
+      />
           <div className="hp-hero__overlay" />
         </div>
         <div className="container">

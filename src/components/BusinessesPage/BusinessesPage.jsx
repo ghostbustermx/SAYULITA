@@ -35,7 +35,7 @@ import imgTours from '../../assets/businesses/tours.png';
 import imgTransportation from '../../assets/businesses/transportation.png';
 import imgWedding from '../../assets/businesses/wedding.png';
 import imgDailyPick from '../../assets/businesses/daily-pick.png';
-import imgBg from '../../assets/sayulita.png';
+import imgBg from '../../assets/sayulita.webp';
 
 const i18n = {
   ENG: {
@@ -415,7 +415,14 @@ export default function BusinessesPage({ language = 'ENG' }) {
       <section className="bp-search-hero">
         {/* Background Image */}
         <div className="bp-search-hero__bg">
-          <img src={imgBg.src} alt="Sayulita background" className="bp-search-hero__bg-img" />
+          <img
+        src={imgBg.src}
+        alt="Sayulita background"
+        className="bp-search-hero__bg-img"
+        width={1200}
+        height={800}
+        fetchPriority="high"
+      />
           <div className="bp-search-hero__overlay"></div>
         </div>
 

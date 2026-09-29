@@ -844,7 +844,14 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
       {/* ═══ HERO ═══ */}
       <section className="sl-hero section" id="surf-hero">
         <div className="sl-hero__bg">
-          <img src={heroBg.src} alt={t.hero.imgAlt} className="sl-hero__bg-img" />
+          <img
+        src={heroBg.src}
+        alt={t.hero.imgAlt}
+        className="sl-hero__bg-img"
+        width={1376}
+        height={768}
+        fetchPriority="high"
+      />
           <div className="sl-hero__overlay" />
         </div>
         <div className="container">

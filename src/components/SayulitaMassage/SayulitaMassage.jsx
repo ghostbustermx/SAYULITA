@@ -328,7 +328,14 @@ export default function SayulitaMassage({ language = 'ENG' }) {
       {/* Hero */}
       <section className="smw-hero">
         <div className="smw-hero__bg">
-          <img src={IMG_AMBIENCE} alt="" className="smw-hero__bg-img" />
+          <img
+            src={IMG_AMBIENCE}
+            alt=""
+            className="smw-hero__bg-img"
+            width={478}
+            height={602}
+            fetchPriority="high"
+          />
           <div className="smw-hero__overlay" />
         </div>
 

@@ -8,7 +8,7 @@ import {
 import { BiBuildingHouse, BiStore, BiPhoneCall } from 'react-icons/bi';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import './Advertise.css';
-import beachHotel from '../../assets/beach-hotel.png';
+import beachHotel from '../../assets/beach-hotel.webp';
 
 const i18n = {
   ENG: {
@@ -283,7 +283,14 @@ export default function Advertise({ language = 'ENG' }) {
       {/* Hero Section */}
       <section className="adv-hero">
         <div className="adv-hero__bg">
-          <img src={beachHotel.src} alt="Sayulita Tropical Vibe" className="adv-hero__bg-img" />
+          <img
+        src={beachHotel.src}
+        alt="Sayulita Tropical Vibe"
+        className="adv-hero__bg-img"
+        width={1024}
+        height={1024}
+        fetchPriority="high"
+      />
           <div className="adv-hero__overlay" />
         </div>
         <div className="adv-hero__content container">

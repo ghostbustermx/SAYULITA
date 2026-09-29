@@ -816,7 +816,14 @@ export default function HousesPage({ language = 'ENG' }) {
       <section className="hop-hero section" id="houses-hero">
         <FloatingPalms />
         <div className="hop-hero__bg">
-          <img src={heroBg.src} alt="Sayulita Houses" className="hop-hero__bg-img" />
+          <img
+        src={heroBg.src}
+        alt="Sayulita Houses"
+        className="hop-hero__bg-img"
+        width={1376}
+        height={768}
+        fetchPriority="high"
+      />
           <div className="hop-hero__overlay" />
         </div>
         <div className="container">
