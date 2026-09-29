@@ -783,8 +783,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
           <h2 className="section-header__title" style={{ textAlign: 'center', marginBottom: 24 }}>{t.search.sectionTitle}</h2>
           <div className="rep-search__bar">
             <div className="rep-search__field">
-              <label>{t.search.type}</label>
-              <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+              <label htmlFor="rep-search-type">{t.search.type}</label>
+              <select id="rep-search-type" value={filterType} onChange={(e) => setFilterType(e.target.value)}>
                 <option value="all">{t.search.typeAll}</option>
                 <option value="house">{t.search.typeHouse}</option>
                 <option value="villa">{t.search.typeVilla}</option>
@@ -794,8 +794,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
               </select>
             </div>
             <div className="rep-search__field">
-              <label>{t.search.zone}</label>
-              <select value={filterZone} onChange={(e) => setFilterZone(e.target.value)}>
+              <label htmlFor="rep-search-zone">{t.search.zone}</label>
+              <select id="rep-search-zone" value={filterZone} onChange={(e) => setFilterZone(e.target.value)}>
                 <option value="all">{t.search.zoneAll}</option>
                 <option value="center">{t.search.zoneCenter}</option>
                 <option value="north">{t.search.zoneNorth}</option>
@@ -804,8 +804,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
               </select>
             </div>
             <div className="rep-search__field">
-              <label>{t.search.bedrooms}</label>
-              <select value={filterBed} onChange={(e) => setFilterBed(e.target.value)}>
+              <label htmlFor="rep-search-bedrooms">{t.search.bedrooms}</label>
+              <select id="rep-search-bedrooms" value={filterBed} onChange={(e) => setFilterBed(e.target.value)}>
                 <option value="any">{t.search.bedAny}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -954,8 +954,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
             <aside className="rep-featured__sidebar">
               <h4>{t.featured.filtersTitle}</h4>
               <div className="rep-featured__sidebar-group">
-                <label>{t.featured.zoneLabel}</label>
-                <select value={filterZone} onChange={(e) => setFilterZone(e.target.value)}>
+                <label htmlFor="rep-featured-zone">{t.featured.zoneLabel}</label>
+                <select id="rep-featured-zone" value={filterZone} onChange={(e) => setFilterZone(e.target.value)}>
                   <option value="all">{t.search.zoneAll}</option>
                   <option value="center">{t.search.zoneCenter}</option>
                   <option value="north">{t.search.zoneNorth}</option>
@@ -964,8 +964,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
                 </select>
               </div>
               <div className="rep-featured__sidebar-group">
-                <label>{t.featured.typeLabel}</label>
-                <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+                <label htmlFor="rep-featured-type">{t.featured.typeLabel}</label>
+                <select id="rep-featured-type" value={filterType} onChange={(e) => setFilterType(e.target.value)}>
                   <option value="all">{t.search.typeAll}</option>
                   <option value="house">{t.search.typeHouse}</option>
                   <option value="villa">{t.search.typeVilla}</option>
@@ -975,8 +975,8 @@ export default function RealEstatePage({ language = 'ENG' }) {
                 </select>
               </div>
               <div className="rep-featured__sidebar-group">
-                <label>{t.featured.priceLabel}</label>
-                <select>
+                <label htmlFor="rep-featured-price">{t.featured.priceLabel}</label>
+                <select id="rep-featured-price">
                   <option>All Prices</option>
                   <option>$150k – $400k</option>
                   <option>$400k – $900k</option>
@@ -989,6 +989,7 @@ export default function RealEstatePage({ language = 'ENG' }) {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
+                  aria-label={t.featured.sortLabel}
                   style={{
                     padding: '8px 14px',
                     border: '1px solid var(--color-outline-variant)',

@@ -884,6 +884,7 @@ export default function HousesPage({ language = 'ENG' }) {
                 value={bedrooms}
                 onChange={(e) => { setBedrooms(e.target.value); setCurrentPage(1); }}
                 id="hop-search-beds"
+                aria-label={t.search.bedroomsLabel}
               >
                 <option value="">{t.search.bedroomsLabel}</option>
                 {t.search.bedrooms.map((label, idx) => (
@@ -899,6 +900,7 @@ export default function HousesPage({ language = 'ENG' }) {
                 value={propertyType}
                 onChange={(e) => { setPropertyType(e.target.value); setCurrentPage(1); }}
                 id="hop-search-type"
+                aria-label={t.search.typeLabel}
               >
                 <option value="">{t.search.typeLabel}</option>
                 <option value="beachfront">{t.search.typeBeachfront}</option>
@@ -1036,7 +1038,7 @@ export default function HousesPage({ language = 'ENG' }) {
           <div className="hop-featured__header">
             <div><h2 className="hop-featured__title">{t.featured.title}</h2></div>
             <div className="hop-featured__sort">
-              <label>{t.featured.sortLabel}</label>
+              <label htmlFor="hop-sort">{t.featured.sortLabel}</label>
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} id="hop-sort">
                 <option value="rating">{t.featured.sortRating}</option>
                 <option value="price-asc">{t.featured.sortPriceAsc}</option>

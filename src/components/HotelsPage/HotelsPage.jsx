@@ -845,6 +845,7 @@ export default function HotelsPage({ language = 'ESP' }) {
                 value={hotelType}
                 onChange={(e) => { setHotelType(e.target.value); setCurrentPage(1); }}
                 id="hp-search-type"
+                aria-label={t.search.typeLabel}
               >
                 <option value="">{t.search.typeLabel}</option>
                 <option value="boutique">{t.search.typeBoutique}</option>
@@ -861,6 +862,7 @@ export default function HotelsPage({ language = 'ESP' }) {
                 value={searchZone}
                 onChange={(e) => { setSearchZone(e.target.value); setCurrentPage(1); }}
                 id="hp-search-zone"
+                aria-label={t.search.zoneLabel}
               >
                 <option value="">{t.search.zoneLabel}</option>
                 <option value="center">{t.search.zoneCenter}</option>
@@ -993,7 +995,7 @@ export default function HotelsPage({ language = 'ESP' }) {
               <h2 className="hp-featured__title">{t.featured.title}</h2>
             </div>
             <div className="hp-featured__sort">
-              <label>{t.featured.sortLabel}</label>
+              <label htmlFor="hp-sort">{t.featured.sortLabel}</label>
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} id="hp-sort">
                 <option value="rating">{t.featured.sortRating}</option>
                 <option value="price-asc">{t.featured.sortPriceAsc}</option>

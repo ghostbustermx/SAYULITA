@@ -887,6 +887,7 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
                 className="sl-search__select"
                 value={searchLevel}
                 onChange={(e) => setSearchLevel(e.target.value)}
+                aria-label={t.search.level}
               >
                 <option value="">{t.search.level}</option>
                 <option value="beginner">{t.search.levelBeginner}</option>
@@ -901,6 +902,7 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
                 className="sl-search__select"
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
+                aria-label={t.search.type}
               >
                 <option value="">{t.search.type}</option>
                 <option value="group">{t.search.typeGroup}</option>
@@ -915,6 +917,7 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
                 className="sl-search__select"
                 value={searchSchool}
                 onChange={(e) => setSearchSchool(e.target.value)}
+                aria-label={t.search.school}
               >
                 <option value="">{t.search.school}</option>
                 {schools.map((s) => (

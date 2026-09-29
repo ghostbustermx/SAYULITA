@@ -957,6 +957,7 @@ export default function ToursPage({ language = 'ESP' }) {
                 className="tp-search__select"
                 value={searchCategory}
                 onChange={(e) => setSearchCategory(e.target.value)}
+                aria-label={t.search.categoryLabel}
               >
                 <option value="">{t.search.categoryLabel}</option>
                 {t.categories.map((cat) => (
@@ -971,6 +972,7 @@ export default function ToursPage({ language = 'ESP' }) {
                 className="tp-search__select"
                 value={searchDuration}
                 onChange={(e) => setSearchDuration(e.target.value)}
+                aria-label={t.search.durationLabel}
               >
                 <option value="">{t.search.durationLabel}</option>
                 <option value="1-2">1–2 horas</option>
@@ -986,6 +988,7 @@ export default function ToursPage({ language = 'ESP' }) {
                 className="tp-search__select"
                 value={searchTraveler}
                 onChange={(e) => setSearchTraveler(e.target.value)}
+                aria-label={t.search.travelerLabel}
               >
                 <option value="">{t.search.travelerLabel}</option>
                 <option value="solo">Solo</option>
