@@ -32,7 +32,7 @@ import imgRealEstate from '../../assets/businesses/real-estate.png';
 import imgRestaurants from '../../assets/businesses/restaurants.png';
 import imgSurfing from '../../assets/businesses/surfing.png';
 import imgTours from '../../assets/businesses/tours.png';
-import imgTransportation from '../../assets/businesses/transportation.png';
+import imgTransportation from '../../assets/transportation-suburban.webp';
 import imgWedding from '../../assets/businesses/wedding.png';
 import imgDailyPick from '../../assets/businesses/daily-pick.png';
 import imgBg from '../../assets/sayulita.webp';
@@ -55,7 +55,7 @@ const i18n = {
       { name: "Restaurants", img: imgRestaurants.src },
       { name: "Surfing", img: imgSurfing.src },
       { name: "Tours", img: imgTours.src },
-      { name: "Transportation", img: imgTransportation.src },
+      { name: "Transportation", img: imgTransportation.src, href: '/transportation' },
       { name: "Wedding Services", img: imgWedding.src }
     ],
     dailyPick: {
@@ -211,7 +211,7 @@ const i18n = {
       { name: "Restaurantes", img: imgRestaurants.src },
       { name: "Surf", img: imgSurfing.src },
       { name: "Tours", img: imgTours.src },
-      { name: "Transporte", img: imgTransportation.src },
+      { name: "Transporte", img: imgTransportation.src, href: '/transportation' },
       { name: "Servicios de Boda", img: imgWedding.src }
     ],
     dailyPick: {
@@ -522,6 +522,7 @@ export default function BusinessesPage({ language = 'ENG' }) {
                 <img src={cat.img} alt={cat.name} className="bp-popular__card-img" />
                 <div className="bp-popular__card-overlay"></div>
                 <h3 className="bp-popular__card-label">{cat.name}</h3>
+                {cat.href && <Link href={cat.href} className="bp-popular__card-link" aria-label={cat.name} />}
               </motion.div>
             ))}
           </div>

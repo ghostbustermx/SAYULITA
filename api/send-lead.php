@@ -60,7 +60,7 @@ $smtpPort = (int) envv('SMTP_PORT', '465');
 $smtpSecure = strtolower(envv('SMTP_SECURE', 'ssl'));
 $fromEmail = envv('SMTP_FROM', $smtpUser);
 $fromName = envv('SMTP_FROM_NAME', 'Sayulita Travel');
-$to = envv('SMTP_TO', 'info@venadoblanco.com');
+$to = 'info@sayulitatravel.com';
 
 $missing = [];
 
@@ -76,7 +76,7 @@ if ($missing !== []) {
 }
 
 if (!filter_var($fromEmail, FILTER_VALIDATE_EMAIL) || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
-    error_log('send-lead: SMTP_FROM o SMTP_TO no son emails validos');
+    error_log('send-lead: SMTP_FROM o el destinatario no son emails validos');
     respond(500, ['success' => false, 'error' => 'SMTP not configured']);
 }
 

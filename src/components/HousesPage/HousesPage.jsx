@@ -1,12 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DateField from '../ui/DateField';
 import {
   FiCalendar, FiSearch, FiStar, FiHeart, FiPlus, FiMinus,
   FiChevronLeft, FiChevronRight, FiArrowRight, FiCheck,
@@ -18,6 +12,7 @@ import {
 } from 'react-icons/md';
 import { IoBedOutline } from 'react-icons/io5';
 import { BsHouseDoor } from 'react-icons/bs';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import heroBg from '../../assets/houses_for_rent.png';
@@ -28,9 +23,9 @@ import hotelPool from '../../assets/hotel-pool.png';
 import hostelBudget from '../../assets/hostel-budget.png';
 import hotelAmor from '../../assets/hotel-amor.png';
 import hotelSayulinda from '../../assets/hotel-sayulinda.png';
-import villaEmma from '../../assets/villa-emma.png';
-import villaRosetta from '../../assets/villa-rosetta.png';
-import casaAmigos from '../../assets/casa-amigos.png';
+import villaEmma from '../../assets/villa-emma.webp';
+import villaRosetta from '../../assets/villa-rosetta.webp';
+import casaAmigos from '../../assets/casa-amigos.webp';
 
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 import './HousesPage.css';
@@ -865,7 +860,7 @@ export default function HousesPage({ language = 'ENG' }) {
             <div className="hop-search__field hop-search__field--dates">
               <div className="hop-search__icon"><FiCalendar size={18} /></div>
               <div className="hop-search__date-range">
-                <DatePicker
+                <DateField
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                   selectsStart startDate={startDate} endDate={endDate}
@@ -873,7 +868,7 @@ export default function HousesPage({ language = 'ENG' }) {
                   dateFormat="dd MMM" minDate={new Date()} id="hop-search-arrive"
                 />
                 <span className="hop-search__date-sep">–</span>
-                <DatePicker
+                <DateField
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
                   selectsEnd startDate={startDate} endDate={endDate}
@@ -963,7 +958,7 @@ export default function HousesPage({ language = 'ENG' }) {
                 id={`house-type-${ht.key}`}
               >
                 <div className="hop-type-card__image-wrap">
-                  <img src={houseTypeImages[ht.key]} alt={ht.title} className="hop-type-card__image" />
+                  <img src={houseTypeImages[ht.key]} alt={ht.title} className="hop-type-card__image" loading="lazy" decoding="async" />
                   <div className="hop-type-card__image-overlay" />
                   <div className="hop-type-card__icon">{houseTypeIcons[ht.key]}</div>
                 </div>
@@ -1109,7 +1104,7 @@ export default function HousesPage({ language = 'ENG' }) {
                       id={`hop-card-${house.id}`}
                     >
                       <div className="hop-card__image-wrap">
-                        <img src={house.image} alt={house.name} className="hop-card__image" />
+                        <img src={house.image} alt={house.name} className="hop-card__image" loading="lazy" decoding="async" />
                         <div className="hop-card__image-overlay" />
                         <span className={`hop-card__badge hop-card__badge--${house.badgeType}`}>
                           {getBadgeIcon(house.badgeType)} {house.badge}
@@ -1279,34 +1274,28 @@ export default function HousesPage({ language = 'ENG' }) {
         <div className="container">
           <SectionHeader label={t.reviewsHeader.label} title={t.reviewsHeader.title} subtitle={t.reviewsHeader.subtitle} />
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={24} slidesPerView={1} navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 6000, disableOnInteraction: false }}
-              breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+            <LazySwiper
               className="hop-reviews__swiper"
-            >
-              {t.reviews.map((r, i) => (
-                <SwiperSlide key={i}>
-                  <div className="hop-review-card" id={`hop-review-${i}`}>
-                    <div className="hop-review-card__stars">
-                      {Array.from({ length: r.rating }).map((_, si) => (
-                        <FiStar key={si} className="hop-review-card__star" />
-                      ))}
+              slides={t.reviews.map((r, i) => (
+                <div className="hop-review-card" id={`hop-review-${i}`} key={i}>
+                  <div className="hop-review-card__stars">
+                    {Array.from({ length: r.rating }).map((_, si) => (
+                      <FiStar key={si} className="hop-review-card__star" />
+                    ))}
+                  </div>
+                  <blockquote className="hop-review-card__quote">"{r.quote}"</blockquote>
+                  <div className="hop-review-card__author">
+                    <div className="hop-review-card__avatar">
+                      {r.name.charAt(0)}
                     </div>
-                    <blockquote className="hop-review-card__quote">"{r.quote}"</blockquote>
-                    <div className="hop-review-card__author">
-                      <div className="hop-review-card__avatar">{r.name.charAt(0)}</div>
-                      <div className="hop-review-card__info">
-                        <span className="hop-review-card__name">{r.name}</span>
-                        <span className="hop-review-card__detail">{r.location} · {r.property} · {r.date}</span>
-                      </div>
+                    <div className="hop-review-card__info">
+                      <span className="hop-review-card__name">{r.name}</span>
+                      <span className="hop-review-card__detail">{r.location} · {r.property} · {r.date}</span>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            />
           </motion.div>
         </div>
       </section>

@@ -5,10 +5,10 @@ import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 
-import villaEmma from '../../assets/villa-emma.png';
-import categoryBeachfront from '../../assets/category-beachfront.png';
-import villaRosetta from '../../assets/villa-rosetta.png';
-import casaAmigos from '../../assets/casa-amigos.png';
+import villaEmma from '../../assets/villa-emma.webp';
+import categoryBeachfront from '../../assets/category-beachfront.webp';
+import villaRosetta from '../../assets/villa-rosetta.webp';
+import casaAmigos from '../../assets/casa-amigos.webp';
 import beachHotel from '../../assets/beach-hotel.webp';
 
 import './RentalTypes.css';
@@ -186,7 +186,7 @@ export default function RentalTypes({ language = 'ENG' }) {
                 id={`rental-type-${i}`}
               >
                 <div className="rental-type__image-wrap">
-                  <img src={type.image} alt={data.title} className="rental-type__image" />
+                  <img src={type.image} alt={data.title} className="rental-type__image" loading="lazy" decoding="async" />
                   <div className="rental-type__image-badge">
                     {type.icon}
                   </div>

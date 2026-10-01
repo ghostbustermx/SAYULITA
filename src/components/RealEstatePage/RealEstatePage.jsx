@@ -1,10 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import {
   FiSearch, FiStar, FiHeart, FiPlus, FiMinus,
   FiArrowRight, FiCheck,
@@ -15,6 +10,7 @@ import {
 import { MdPool, MdBeachAccess, MdAcUnit, MdPets, MdOutlineLocationOn } from 'react-icons/md';
 import { IoBedOutline } from 'react-icons/io5';
 import { BiBuildings, BiLandscape, BiWater } from 'react-icons/bi';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import heroBg from '../../assets/real_state.webp';
@@ -1195,36 +1191,26 @@ export default function RealEstatePage({ language = 'ENG' }) {
             title={t.testimonials.title}
             subtitle={t.testimonials.subtitle}
           />
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+          <LazySwiper
             className="rep-testimonials__swiper"
-          >
-            {t.testimonials.reviews.map((r, i) => (
-              <SwiperSlide key={i}>
-                <div className="rep-testimonial-card">
-                  <div className="rep-testimonial-card__stars">
-                    {Array.from({ length: r.rating }).map((_, si) => (
-                      <FiStar key={si} size={16} />
-                    ))}
-                  </div>
-                  <blockquote className="rep-testimonial-card__quote">"{r.quote}"</blockquote>
-                  <div className="rep-testimonial-card__author">
-                    <div className="rep-testimonial-card__avatar">{r.name.charAt(0)}</div>
-                    <div className="rep-testimonial-card__info">
-                      <span className="rep-testimonial-card__name">{r.name}</span>
-                      <span className="rep-testimonial-card__detail">{r.location} · {r.property} · {r.date}</span>
-                    </div>
+            slides={t.testimonials.reviews.map((r, i) => (
+              <div className="rep-testimonial-card" key={i}>
+                <div className="rep-testimonial-card__stars">
+                  {Array.from({ length: r.rating }).map((_, si) => (
+                    <FiStar key={si} size={16} />
+                  ))}
+                </div>
+                <blockquote className="rep-testimonial-card__quote">"{r.quote}"</blockquote>
+                <div className="rep-testimonial-card__author">
+                  <div className="rep-testimonial-card__avatar">{r.name.charAt(0)}</div>
+                  <div className="rep-testimonial-card__info">
+                    <span className="rep-testimonial-card__name">{r.name}</span>
+                    <span className="rep-testimonial-card__detail">{r.location} · {r.property} · {r.date}</span>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          />
         </div>
       </section>
 

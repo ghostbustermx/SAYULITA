@@ -7,7 +7,7 @@ import './ExploreSection.css';
 const exploreItems = [
   { icon: '🌮', href: '/businesses', color: '#f9a825' },
   { icon: '🏄‍♂️', href: '/tours', color: '#006399' },
-  { icon: '🚐', href: 'https://sayulitatransportation.com/', color: '#2c694e', external: true },
+  { icon: '🚐', href: '/transportation', color: '#2c694e' },
   { icon: '🏡', href: '/real-estate', color: '#835400' },
   { icon: '🌴', href: '#about', color: '#12533a' },
 ];

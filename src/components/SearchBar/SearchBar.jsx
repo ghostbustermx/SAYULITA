@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { FiCalendar, FiSearch } from 'react-icons/fi';
 import { IoBedOutline } from 'react-icons/io5';
 import { BsHouseDoor } from 'react-icons/bs';
+import DateField from '../ui/DateField';
 import './SearchBar.css';
 
 const i18n = {
@@ -55,7 +54,7 @@ export default function SearchBar({ language = 'ENG' }) {
       <div className="search-bar__field search-bar__field--dates">
         <div className="search-bar__icon"><FiCalendar size={18} /></div>
         <div className="search-bar__date-range">
-          <DatePicker
+          <DateField
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             selectsStart
@@ -67,7 +66,7 @@ export default function SearchBar({ language = 'ENG' }) {
             id="search-arrive"
           />
           <span className="search-bar__date-sep">–</span>
-          <DatePicker
+          <DateField
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             selectsEnd

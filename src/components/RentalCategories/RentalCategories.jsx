@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '../ui/SectionHeader';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
-import categoryBeachfront from '../../assets/category-beachfront.png';
-import villaEmma from '../../assets/villa-emma.png';
-import casaAmigos from '../../assets/casa-amigos.png';
-import villaRosetta from '../../assets/villa-rosetta.png';
+import categoryBeachfront from '../../assets/category-beachfront.webp';
+import villaEmma from '../../assets/villa-emma.webp';
+import casaAmigos from '../../assets/casa-amigos.webp';
+import villaRosetta from '../../assets/villa-rosetta.webp';
 import beachHotel from '../../assets/beach-hotel.webp';
 import './RentalCategories.css';
 
@@ -54,7 +54,7 @@ export default function RentalCategories({ language = 'ENG' }) {
               whileHover={{ scale: 1.03 }}
               id={`category-${cat.name.toLowerCase().replace(/\s/g, '-')}`}
             >
-              <img src={cat.image} alt={cat.name} className="category-tile__image" />
+              <img src={cat.image} alt={cat.name} className="category-tile__image" loading="lazy" decoding="async" />
               <div className="category-tile__overlay" />
               <div className="category-tile__content">
                 <span className="category-tile__name">{cat.name}</span>

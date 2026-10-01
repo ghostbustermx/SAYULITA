@@ -1,4 +1,4 @@
-import palmImg from '../../assets/10265265.png';
+import palmImg from '../../assets/10265265.webp';
 import './FloatingPalms.css';
 
 const palms = [
@@ -23,7 +23,7 @@ export default function FloatingPalms() {
             animationDuration: `${palm.duration}s`,
           }}
         >
-          <img src={palmImg.src} alt="" className="floating-palm" />
+          <img src={palmImg.src} alt="" className="floating-palm" loading="lazy" decoding="async" />
         </div>
       ))}
     </div>

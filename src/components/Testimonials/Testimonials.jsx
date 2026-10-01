@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { FiStar } from 'react-icons/fi';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import './Testimonials.css';
 
@@ -90,46 +86,34 @@ export default function Testimonials({ language = 'ENG' }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
+          <LazySwiper
+            autoplayDelay={5000}
             className="testimonials__swiper"
-          >
-            {t.reviews.map((review, i) => {
+            slides={t.reviews.map((review, i) => {
               const meta = reviewMeta[i];
               return (
-                <SwiperSlide key={i}>
-                  <div className="review-card" id={`review-${i}`}>
-                    <div className="review-card__stars">
-                      {Array.from({ length: meta.rating }).map((_, si) => (
-                        <FiStar key={si} className="review-card__star" />
-                      ))}
+                <div className="review-card" id={`review-${i}`} key={i}>
+                  <div className="review-card__stars">
+                    {Array.from({ length: meta.rating }).map((_, si) => (
+                      <FiStar key={si} className="review-card__star" />
+                    ))}
+                  </div>
+                  <blockquote className="review-card__quote">
+                    "{review.quote}"
+                  </blockquote>
+                  <div className="review-card__author">
+                    <div className="review-card__avatar">
+                      {meta.name.charAt(0)}
                     </div>
-                    <blockquote className="review-card__quote">
-                      "{review.quote}"
-                    </blockquote>
-                    <div className="review-card__author">
-                      <div className="review-card__avatar">
-                        {meta.name.charAt(0)}
-                      </div>
-                      <div className="review-card__info">
-                        <span className="review-card__name">{meta.name}</span>
-                        <span className="review-card__detail">{meta.location} · {meta.property} · {review.date}</span>
-                      </div>
+                    <div className="review-card__info">
+                      <span className="review-card__name">{meta.name}</span>
+                      <span className="review-card__detail">{meta.location} · {meta.property} · {review.date}</span>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               );
             })}
-          </Swiper>
+          />
         </motion.div>
       </div>
     </section>

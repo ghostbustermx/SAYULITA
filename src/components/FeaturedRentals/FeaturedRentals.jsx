@@ -6,9 +6,9 @@ import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
 
-import villaEmma from '../../assets/villa-emma.png';
-import villaRosetta from '../../assets/villa-rosetta.png';
-import casaAmigos from '../../assets/casa-amigos.png';
+import villaEmma from '../../assets/villa-emma.webp';
+import villaRosetta from '../../assets/villa-rosetta.webp';
+import casaAmigos from '../../assets/casa-amigos.webp';
 import beachHotel from '../../assets/beach-hotel.webp';
 
 import './FeaturedRentals.css';
@@ -120,7 +120,7 @@ export default function FeaturedRentals({ language = 'ENG' }) {
               id={`rental-card-${rental.id}`}
             >
               <div className="rental-card__image-wrap">
-                <img src={rental.image} alt={rental.name} className="rental-card__image" />
+                <img src={rental.image} alt={rental.name} className="rental-card__image" loading="lazy" decoding="async" />
                 <div className="rental-card__image-overlay" />
                 {rental.badge && (
                   <span className={`rental-card__badge rental-card__badge--${rental.badge.toLowerCase().replace(' ', '-')}`}>

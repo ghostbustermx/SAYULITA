@@ -1,12 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DateField from '../ui/DateField';
 import {
   FiCalendar, FiSearch, FiStar, FiHeart, FiPlus, FiMinus,
   FiChevronLeft, FiChevronRight, FiArrowRight, FiCheck,
@@ -18,6 +12,7 @@ import {
 } from 'react-icons/md';
 import { IoBedOutline } from 'react-icons/io5';
 import { BsHouseDoor } from 'react-icons/bs';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 
@@ -27,9 +22,9 @@ import hotelPool from '../../assets/hotel-pool.png';
 import hostelBudget from '../../assets/hostel-budget.png';
 import hotelAmor from '../../assets/hotel-amor.png';
 import hotelSayulinda from '../../assets/hotel-sayulinda.png';
-import villaEmma from '../../assets/villa-emma.png';
-import villaRosetta from '../../assets/villa-rosetta.png';
-import casaAmigos from '../../assets/casa-amigos.png';
+import villaEmma from '../../assets/villa-emma.webp';
+import villaRosetta from '../../assets/villa-rosetta.webp';
+import casaAmigos from '../../assets/casa-amigos.webp';
 
 import heroBg from '../../assets/hotels.webp';
 import FloatingPalms from '../FloatingPalms/FloatingPalms';
@@ -819,7 +814,7 @@ export default function HotelsPage({ language = 'ESP' }) {
             <div className="hp-search__field hp-search__field--dates">
               <div className="hp-search__icon"><FiCalendar size={18} /></div>
               <div className="hp-search__date-range">
-                <DatePicker
+                <DateField
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                   selectsStart
@@ -831,7 +826,7 @@ export default function HotelsPage({ language = 'ESP' }) {
                   id="hp-search-arrive"
                 />
                 <span className="hp-search__date-sep">–</span>
-                <DatePicker
+                <DateField
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
                   selectsEnd
@@ -927,7 +922,7 @@ export default function HotelsPage({ language = 'ESP' }) {
                 id={`hotel-type-${ht.key}`}
               >
                 <div className="hp-type-card__image-wrap">
-                  <img src={hotelTypeImages[ht.key]} alt={ht.title} className="hp-type-card__image" />
+                  <img src={hotelTypeImages[ht.key]} alt={ht.title} className="hp-type-card__image" loading="lazy" decoding="async" />
                   <div className="hp-type-card__image-overlay" />
                   <div className="hp-type-card__icon">{hotelTypeIcons[ht.key]}</div>
                 </div>
@@ -1085,7 +1080,7 @@ export default function HotelsPage({ language = 'ESP' }) {
                       id={`hp-card-${hotel.id}`}
                     >
                       <div className="hp-card__image-wrap">
-                        <img src={hotel.image} alt={hotel.name} className="hp-card__image" />
+                        <img src={hotel.image} alt={hotel.name} className="hp-card__image" loading="lazy" decoding="async" />
                         <div className="hp-card__image-overlay" />
                         <span className={`hp-card__badge hp-card__badge--${hotel.badgeType}`}>
                           {getBadgeIcon(hotel.badgeType)} {hotel.badge}
@@ -1247,42 +1242,32 @@ export default function HotelsPage({ language = 'ESP' }) {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={24}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 6000, disableOnInteraction: false }}
-              breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+            <LazySwiper
               className="hp-reviews__swiper"
-            >
-              {t.reviews.map((r, i) => (
-                <SwiperSlide key={i}>
-                  <div className="hp-review-card" id={`hp-review-${i}`}>
-                    <div className="hp-review-card__stars">
-                      {Array.from({ length: r.rating }).map((_, si) => (
-                        <FiStar key={si} className="hp-review-card__star" />
-                      ))}
+              slides={t.reviews.map((r, i) => (
+                <div className="hp-review-card" id={`hp-review-${i}`} key={i}>
+                  <div className="hp-review-card__stars">
+                    {Array.from({ length: r.rating }).map((_, si) => (
+                      <FiStar key={si} className="hp-review-card__star" />
+                    ))}
+                  </div>
+                  <blockquote className="hp-review-card__quote">
+                    "{r.quote}"
+                  </blockquote>
+                  <div className="hp-review-card__author">
+                    <div className="hp-review-card__avatar">
+                      {r.name.charAt(0)}
                     </div>
-                    <blockquote className="hp-review-card__quote">
-                      "{r.quote}"
-                    </blockquote>
-                    <div className="hp-review-card__author">
-                      <div className="hp-review-card__avatar">
-                        {r.name.charAt(0)}
-                      </div>
-                      <div className="hp-review-card__info">
-                        <span className="hp-review-card__name">{r.name}</span>
-                        <span className="hp-review-card__detail">
-                          {r.location} · {r.property} · {r.date}
-                        </span>
-                      </div>
+                    <div className="hp-review-card__info">
+                      <span className="hp-review-card__name">{r.name}</span>
+                      <span className="hp-review-card__detail">
+                        {r.location} · {r.property} · {r.date}
+                      </span>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            />
           </motion.div>
         </div>
       </section>

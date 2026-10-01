@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import SearchBar from '../SearchBar/SearchBar';
-import heroBg from '../../assets/hero-bg.webp';
+import heroBgLandscape from '../../assets/hero-bg-landscape.webp';
+import heroBgPortrait from '../../assets/hero-bg-portrait.webp';
 import './Hero.css';
 
 const i18n = {
@@ -24,14 +25,17 @@ export default function Hero({ language = 'ENG' }) {
   return (
     <section className="hero" id="hero">
       <div className="hero__bg">
-        <img
-          src={heroBg.src}
-          alt="Sayulita Beach Panoramic View"
-          className="hero__bg-img"
-          width={1024}
-          height={1024}
-          fetchPriority="high"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={heroBgPortrait.src} />
+          <img
+            src={heroBgLandscape.src}
+            alt="Sayulita Beach Panoramic View"
+            className="hero__bg-img"
+            width={1024}
+            height={544}
+            fetchPriority="high"
+          />
+        </picture>
         <div className="hero__overlay" />
       </div>
 

@@ -268,6 +268,26 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-primary-fixed) !important;
 }
 
+/* --- Lazy carousel (server-rendered stand-in until Swiper hydrates) --- */
+.swiper.lazy-swiper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.swiper.lazy-swiper .swiper-slide {
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .swiper.lazy-swiper .swiper-slide {
+    width: calc((100% - 24px) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .swiper.lazy-swiper .swiper-slide {
+    width: calc((100% - 48px) / 3);
+  }
+}
+
 /* --- Scrollbar --- */
 ::-webkit-scrollbar {
   width: 8px;

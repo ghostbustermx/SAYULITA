@@ -1,12 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DateField from '../ui/DateField';
 import {
   FiCalendar, FiSearch, FiStar, FiArrowRight, FiCheck,
   FiShield, FiDollarSign, FiMessageCircle, FiChevronDown,
@@ -23,6 +17,7 @@ import {
   BsCalendarCheck
 } from 'react-icons/bs';
 import { GiWhaleTail, GiHorseHead, GiTurtle, GiParachute, GiGlassShot } from 'react-icons/gi';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import heroBg from '../../assets/tours.webp';
@@ -949,7 +944,7 @@ export default function ToursPage({ language = 'ESP' }) {
           >
             <div className="tp-search__field">
               <div className="tp-search__icon"><FiCalendar size={18} /></div>
-              <DatePicker
+              <DateField
                 selected={searchDate}
                 onChange={(date) => setSearchDate(date)}
                 placeholderText={t.search.dateLabel}
@@ -1174,43 +1169,30 @@ export default function ToursPage({ language = 'ESP' }) {
             label={language === 'ESP' ? 'Reseñas de viajeros' : 'Traveler reviews'}
             title={language === 'ESP' ? 'Lo que Dicen Nuestros Viajeros' : 'What Our Travelers Say'}
           />
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
+          <LazySwiper
             className="tp-reviews__swiper"
-          >
-            {t.reviews.map((review, i) => (
-              <SwiperSlide key={i}>
-                <div className="tp-review-card">
-                  <div className="tp-review-card__stars">
-                    {[...Array(review.rating)].map((_, s) => (
-                      <FiStar key={s} size={15} className="tp-review-card__star" />
-                    ))}
+            slides={t.reviews.map((review, i) => (
+              <div className="tp-review-card" key={i}>
+                <div className="tp-review-card__stars">
+                  {[...Array(review.rating)].map((_, s) => (
+                    <FiStar key={s} size={15} className="tp-review-card__star" />
+                  ))}
+                </div>
+                <p className="tp-review-card__quote">"{review.quote}"</p>
+                <div className="tp-review-card__author">
+                  <div className="tp-review-card__avatar">
+                    {review.name.charAt(0)}
                   </div>
-                  <p className="tp-review-card__quote">"{review.quote}"</p>
-                  <div className="tp-review-card__author">
-                    <div className="tp-review-card__avatar">
-                      {review.name.charAt(0)}
-                    </div>
-                    <div className="tp-review-card__info">
-                      <strong className="tp-review-card__name">{review.name}</strong>
-                      <span className="tp-review-card__detail">
-                        {review.activity} · {review.date} · {review.location}
-                      </span>
-                    </div>
+                  <div className="tp-review-card__info">
+                    <strong className="tp-review-card__name">{review.name}</strong>
+                    <span className="tp-review-card__detail">
+                      {review.activity} · {review.date} · {review.location}
+                    </span>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          />
         </div>
       </section>
 

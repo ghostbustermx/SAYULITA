@@ -836,7 +836,7 @@
 
 /* --- Final CTA Banner --- */
 .adv-section--final-cta {
-  background: linear-gradient(135deg, rgba(19, 39, 29, 0.95) 0%, rgba(12, 19, 16, 0.92) 100%), url('../../assets/category-beachfront.png');
+  background: linear-gradient(135deg, rgba(19, 39, 29, 0.95) 0%, rgba(12, 19, 16, 0.92) 100%), url('../../assets/category-beachfront.webp');
   background-size: cover;
   background-position: center;
   color: #ffffff;

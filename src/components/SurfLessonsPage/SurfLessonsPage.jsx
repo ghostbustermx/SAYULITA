@@ -1,12 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DateField from '../ui/DateField';
 import {
   FiCalendar, FiSearch, FiStar, FiArrowRight, FiCheck,
   FiShield, FiDollarSign, FiMessageCircle, FiChevronDown,
@@ -18,6 +12,7 @@ import {
 } from 'react-icons/md';
 import { GiWhaleTail, GiHorseHead, GiTurtle, GiParachute, GiGlassShot, GiSurfBoard } from 'react-icons/gi';
 import { IoPeopleSharp } from 'react-icons/io5';
+import LazySwiper from '../ui/LazySwiper';
 import SectionHeader from '../ui/SectionHeader';
 import Button from '../ui/Button';
 import heroBg from '../../assets/surf_lessons.png';
@@ -935,7 +930,7 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
             <div className="sl-search__divider" />
             <div className="sl-search__field">
               <div className="sl-search__icon"><FiCalendar size={18} /></div>
-              <DatePicker
+              <DateField
                 selected={searchDate}
                 onChange={(date) => setSearchDate(date)}
                 placeholderText={t.search.date}
@@ -1236,36 +1231,26 @@ export default function SurfLessonsPage({ language = 'ENG' }) {
         <FloatingPalms />
         <div className="container">
           <SectionHeader label={t.testimonials.label} title={t.testimonials.title} />
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+          <LazySwiper
             className="sl-testimonials__swiper"
-          >
-            {t.testimonials.items.map((r, i) => (
-              <SwiperSlide key={i}>
-                <div className="sl-testimonial-card">
-                  <div className="sl-testimonial-card__stars">
-                    {Array.from({ length: r.rating }).map((_, si) => (
-                      <FiStar key={si} size={16} />
-                    ))}
-                  </div>
-                  <blockquote className="sl-testimonial-card__quote">"{r.quote}"</blockquote>
-                  <div className="sl-testimonial-card__author">
-                    <div className="sl-testimonial-card__avatar">{r.name.charAt(0)}</div>
-                    <div className="sl-testimonial-card__info">
-                      <span className="sl-testimonial-card__name">{r.name}</span>
-                      <span className="sl-testimonial-card__detail">{r.activity} · {r.date} · {r.location}</span>
-                    </div>
+            slides={t.testimonials.items.map((r, i) => (
+              <div className="sl-testimonial-card" key={i}>
+                <div className="sl-testimonial-card__stars">
+                  {Array.from({ length: r.rating }).map((_, si) => (
+                    <FiStar key={si} size={16} />
+                  ))}
+                </div>
+                <blockquote className="sl-testimonial-card__quote">"{r.quote}"</blockquote>
+                <div className="sl-testimonial-card__author">
+                  <div className="sl-testimonial-card__avatar">{r.name.charAt(0)}</div>
+                  <div className="sl-testimonial-card__info">
+                    <span className="sl-testimonial-card__name">{r.name}</span>
+                    <span className="sl-testimonial-card__detail">{r.activity} · {r.date} · {r.location}</span>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          />
         </div>
       </section>
 
